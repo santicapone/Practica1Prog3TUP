@@ -15,7 +15,7 @@ namespace Web.Controllers
             string[] daysWeek = ["lunes", "martes", "miercoles", "jueves", "viernes"];
             string[] daysWeekend = ["sabado", "domingo"];
 
-            day = day.ToLower();
+            day = day.ToLower().Trim();
 
             if (daysWeek.Contains(day))
             {
