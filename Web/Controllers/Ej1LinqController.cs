@@ -1,29 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Ej1linqController : ControllerBase
+    public class Ej1LinqController : ControllerBase
     {
         [HttpGet()]
-        public int[] Get([FromQuery] int[] score)
+        public List<int> Get([FromQuery] List<int> oneList)
         {
-            score = [67, 92, 153, 15];
+            var filteredList = oneList.Where(x => x > 30 && x < 100).ToList();
+            return filteredList;
+            
 
-            var scorequery =
-            from num in score
-            where num > 30 && num < 100
-            select num;
-
-            return scorequery.ToArray();
         }
-            
-            
-
-        
-        
     }
 }
+
